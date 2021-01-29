@@ -7,11 +7,15 @@ public class Representant {
 	private final String prenom;
 	private String adresse;
 	private float salaireFixe;
+	private ZoneGeographique zone;
+	private float caMensuel[];
 
 	public Representant(int numero, String nom, String prenom, ZoneGeographique secteur) {
 		this.numero = numero;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.zone = secteur;
+		this.caMensuel = new float[11];
 	}
 
 	public int getNumero() {
@@ -43,14 +47,11 @@ public class Representant {
 	}
 
 	public ZoneGeographique getSecteur() {
-		// TODO: Implémenter cette méthode
-		//Test
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		return this.zone;
 	}
 
 	public void setSecteur(ZoneGeographique secteur) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		this.zone = secteur;
 	}
 
 	/**
@@ -66,8 +67,10 @@ public class Representant {
 		if (montant < 0) {
 			throw new IllegalArgumentException("Le montant doit être positif ou null");
 		}
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if(montant == 0) {
+			throw new IllegalArgumentException("Le CA n'est pas correctement initialisé");
+		}
+		this.caMensuel[mois] = montant;
 	}
 
 	/**
@@ -77,8 +80,7 @@ public class Representant {
 	 * @return le salaire pour ce mois, tenant compte du salaire fixe, de l'indemnité repas, et du pourcentage sur CA
 	 */
 	public float salaireMensuel(int mois, float pourcentage) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		return this.salaireFixe + this.zone.getIndemniteRepas() + this.caMensuel[mois]*pourcentage;
 	}
 
 	@Override
