@@ -44,6 +44,7 @@ public class Representant {
 
 	public ZoneGeographique getSecteur() {
 		// TODO: Implémenter cette méthode
+		//Test
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
